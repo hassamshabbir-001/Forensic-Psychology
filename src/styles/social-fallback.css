@@ -1,0 +1,1 @@
+.brand-row::before{content:"";grid-column:1;grid-row:1;justify-self:start;width:252px;height:32px;background:url('/images/social-icons-monochrome.svg') left center/contain no-repeat;display:block}.brand-row:has(.social-links)::before{display:none}@media(max-width:1180px){.brand-row::before{width:210px;height:27px}}@media(max-width:920px){.brand-row::before{display:none}}
