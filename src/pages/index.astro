@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/header.css";
 
 const title = "Forensic Psychology: Careers, Degrees & Expert Guidance";
 const description = "Expert-led, evidence-informed guides to forensic psychology, career paths, degrees, assessment, salaries and professional practice.";
@@ -34,7 +35,19 @@ const schema = {
   "@graph": [
     { "@type": "Organization", "@id": "https://forensicpsychology.pro/#organization", name: "Forensic Psychology", url: "https://forensicpsychology.pro/", logo: { "@type": "ImageObject", url: "https://forensicpsychology.pro/images/forensic-psychology-official-logo.webp" } },
     { "@type": "WebSite", "@id": "https://forensicpsychology.pro/#website", name: "Forensic Psychology", url: "https://forensicpsychology.pro/", publisher: { "@id": "https://forensicpsychology.pro/#organization" } },
-    { "@type": "WebPage", "@id": "https://forensicpsychology.pro/#webpage", name: title, description, url: "https://forensicpsychology.pro/", isPartOf: { "@id": "https://forensicpsychology.pro/#website" } }
+    { "@type": "WebPage", "@id": "https://forensicpsychology.pro/#webpage", name: title, description, url: "https://forensicpsychology.pro/", isPartOf: { "@id": "https://forensicpsychology.pro/#website" } },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://forensicpsychology.pro/#primary-navigation",
+      name: ["Career Guide", "Degrees & Programs", "Salary & Job Outlook", "Blog", "About"],
+      url: [
+        "https://forensicpsychology.pro/career-guide/",
+        "https://forensicpsychology.pro/degrees-programs/",
+        "https://forensicpsychology.pro/salary-job-outlook/",
+        "https://forensicpsychology.pro/blog/",
+        "https://forensicpsychology.pro/about/"
+      ]
+    }
   ]
 };
 ---
@@ -63,19 +76,44 @@ const schema = {
     <a class="skip" href="#content">Skip to content</a>
     <header class="site-header">
       <div class="brand-row wrap">
-        <button class="menu-button" aria-label="Open menu" aria-expanded="false" data-menu-button><span></span><span></span><span></span></button>
-        <a class="brand" href="/" aria-label="Forensic Psychology home"><img src="/images/forensic-psychology-official-logo.webp" width="480" height="120" alt="Forensic Psychology official logo" /></a>
-        <button class="search-button" aria-label="Open search" data-search-button>⌕</button>
+        <button class="menu-button" type="button" aria-label="Open menu" aria-controls="primary-navigation" aria-expanded="false" data-menu-button><span></span><span></span><span></span></button>
+        <a class="brand" href="/" aria-label="Forensic Psychology home">
+          <img src="/images/forensic-psychology-official-logo.webp" width="480" height="120" alt="Forensic Psychology official logo" />
+        </a>
+        <button class="search-button" type="button" aria-label="Open search" aria-controls="site-search" aria-expanded="false" data-search-button>⌕</button>
       </div>
-      <nav class="nav wrap" aria-label="Primary navigation" data-menu>
-        <a class="active" href="/">Home</a>
-        <a href="/career-guide/">Career Guide</a>
-        <details><summary>What Is Forensic Psychology</summary><div><a href="/what-is-forensic-psychology/">Overview</a><a href="/what-is-forensic-psychology/history/">History</a><a href="/what-is-forensic-psychology/forensic-vs-criminal-psychology/">Forensic vs Criminal Psychology</a></div></details>
-        <details><summary>Career Paths & Job Roles</summary><div><a href="/career-paths-job-roles/">Career Paths</a><a href="/day-in-the-life/">Day in the Life</a><a href="/skills-needed/">Skills Needed</a></div></details>
-        <details><summary>Degrees & Programs</summary><div><a href="/degrees-programs/">Overview</a><a href="/degrees-programs/bachelors/">Bachelor’s</a><a href="/degrees-programs/masters/">Master’s</a><a href="/degrees-programs/doctoral/">PhD & Doctorate</a><a href="/degrees-programs/online/">Online Programs</a></div></details>
-        <a href="/salary-job-outlook/">Salary & Job Outlook</a><a href="/blog/">Blog</a><a href="/about/">About</a><a href="/contact/">Contact</a>
-      </nav>
-      <div class="search-panel wrap" hidden data-search-panel><label for="search">Search the site</label><div><input id="search" type="search" placeholder="Search careers, degrees, assessment…" /><button>Search</button></div></div>
+
+      <div class="nav-shell">
+        <nav id="primary-navigation" class="nav wrap" aria-label="Primary navigation" data-menu>
+          <div class="nav-item" data-dropdown>
+            <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="career-guide-menu" data-dropdown-trigger>Career Guide</button>
+            <div id="career-guide-menu" class="dropdown-panel" data-dropdown-panel>
+              <a href="/career-guide/"><strong>Career Guide</strong><span>Explore the complete career pathway</span></a>
+              <a href="/what-is-forensic-psychology/"><strong>What is Forensic Psychology</strong><span>Understand the field and its role in law</span></a>
+              <a href="/career-paths-job-roles/"><strong>Career Paths & Job Roles</strong><span>Compare workplaces, specialties and roles</span></a>
+              <a href="/day-in-the-life/"><strong>Day in the Life</strong><span>See what the work looks like in practice</span></a>
+              <a href="/skills-needed/"><strong>Skills Needed</strong><span>Build clinical, analytical and ethical skills</span></a>
+            </div>
+          </div>
+
+          <div class="nav-item" data-dropdown>
+            <button class="dropdown-trigger" type="button" aria-expanded="false" aria-controls="degrees-programs-menu" data-dropdown-trigger>Degrees & Programs</button>
+            <div id="degrees-programs-menu" class="dropdown-panel" data-dropdown-panel>
+              <a href="/degrees-programs/"><strong>Degrees & Programs</strong><span>Compare education pathways and options</span></a>
+              <a href="/degrees-programs/bachelors/"><strong>Bachelor's in Forensic Psychology</strong><span>Foundation degrees and early career planning</span></a>
+              <a href="/degrees-programs/masters/"><strong>Master's in Forensic Psychology</strong><span>Advanced study and specialist preparation</span></a>
+              <a href="/degrees-programs/doctoral/"><strong>PhD/Doctorate Programs</strong><span>Research and professional doctoral routes</span></a>
+              <a href="/degrees-programs/online/"><strong>Online Programs</strong><span>Flexible and distance-learning options</span></a>
+            </div>
+          </div>
+
+          <div class="nav-item"><a class="nav-link" href="/salary-job-outlook/">Salary & Job Outlook</a></div>
+          <div class="nav-item"><a class="nav-link" href="/blog/">Blog</a></div>
+          <div class="nav-item"><a class="nav-link" href="/about/">About</a></div>
+        </nav>
+      </div>
+
+      <div id="site-search" class="search-panel wrap" hidden data-search-panel><label for="search">Search the site</label><div><input id="search" type="search" placeholder="Search careers, degrees, assessment…" /><button type="button">Search</button></div></div>
     </header>
 
     <main id="content">
